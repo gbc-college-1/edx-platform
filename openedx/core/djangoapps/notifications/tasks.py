@@ -193,8 +193,8 @@ def send_notifications(user_ids, course_key: str, app_name, notification_type, c
 
                 generated_notification_audience.append(user_id)
 
-            # send notification to users but use bulk_create
-            Notification.objects.bulk_create(notifications)
+        # send notification to users but use bulk_create
+        Notification.objects.bulk_create(notifications)
 
         # Get fresh records with pk so it can be used in email sending because there is a need to
         # update the records further down the line.
