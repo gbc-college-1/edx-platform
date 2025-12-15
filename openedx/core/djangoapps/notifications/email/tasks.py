@@ -63,23 +63,6 @@ def get_buffer_minutes() -> int:
     return getattr(settings, 'NOTIFICATION_IMMEDIATE_EMAIL_BUFFER_MINUTES', 0)
 
 
-# @shared_task
-# @set_code_owner_attribute
-# def send_digest_email_to_user_async(user_id, cadence_type, start_date, end_date, user_language='en', courses_data=None):
-#     """
-#     Async wrapper for send_digest_email_to_user
-#     """
-#     user = get_user_model().objects.get(id=user_id)
-#     send_digest_email_to_user(
-#         user,
-#         cadence_type,
-#         start_date,
-#         end_date,
-#         user_language=user_language,
-#         courses_data=courses_data
-#     )
-
-
 def send_digest_email_to_user(
     user: User,
     cadence_type: str,
