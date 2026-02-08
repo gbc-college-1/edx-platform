@@ -135,9 +135,12 @@ class CourseGradeBase:
             chapter_subsection_grades = []
             children = course_structure.get_children(chapter_key)
             for subsection_key in children:
-                chapter_subsection_grades.append(
-                    self._subsection_grade_factory.create(course_structure[subsection_key], read_only=True)
-                )
+                try:
+                    chapter_subsection_grades.append(
+                        self._subsection_grade_factory.create(course_structure[subsection_key], read_only=True)
+                    )
+                except Exception as e:
+                    continue
 
             chapter_grades.append({
                 'display_name': block_metadata_utils.display_name_with_default_escaped(chapter),
